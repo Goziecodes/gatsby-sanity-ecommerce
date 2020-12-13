@@ -1,4 +1,5 @@
 import React from 'react';
+import 'tailwindcss/dist/base.min.css';
 
 import Layout from './src/components/Layout';
 import { OrderProvider } from './src/components/OrderContext';

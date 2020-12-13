@@ -81,6 +81,7 @@ const GlobalStyles = createGlobalStyle`
     display: inline-block;
   }
 
+
 `;
 
 export default GlobalStyles;
