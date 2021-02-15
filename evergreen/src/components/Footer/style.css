@@ -1,0 +1,19 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+.css-shapes-preview {
+  position: relative;
+  top: 63px;
+  height: 70px;
+  width: 57%;
+  border-left: 5rem solid white;
+  border-right: 400rem solid white;
+  border-bottom: 40px solid transparent;
+}
+.css-shapes-preview:before {
+  content: "";
+  border-left: 0px transparent;
+  border-right: 0px transparent;
+}
