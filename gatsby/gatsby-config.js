@@ -13,6 +13,7 @@ export default {
   plugins: [
     'gatsby-plugin-styled-components',
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-postcss',
     {
       //   name of plugin im adding
       resolve: 'gatsby-source-sanity',
@@ -21,6 +22,13 @@ export default {
         dataset: 'production',
         watchMode: true,
         token: process.env.SANITY_TOKEN,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `src`,
+        path: `${__dirname}/src/`,
       },
     },
   ],

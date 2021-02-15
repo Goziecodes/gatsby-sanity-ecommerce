@@ -11,7 +11,7 @@ const GlobalStyles = createGlobalStyle`
     --grey: #efefef;
   }
   html {
-    background-image: url(${bg});
+    // background-image: url(${bg});
     background-size: 450px;
     background-attachment: fixed;
     font-size: 10px;
@@ -34,7 +34,7 @@ const GlobalStyles = createGlobalStyle`
     border-radius: 2px;
     cursor: pointer;
     --cast: 2px;
-    box-shadow: var(--cast) var(--cast) 0 var(--grey);
+    // box-shadow: var(--cast) var(--cast) 0 var(--grey);
     text-shadow: 0.5px 0.5px 0 rgba(0,0,0,0.2);
     transition: all 0.2s;
     &:hover {

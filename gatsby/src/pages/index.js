@@ -1,7 +1,7 @@
 import React from 'react';
 import tw from 'twin.macro';
 
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import styled from 'styled-components';
 import DesignsFilter from '../components/DesignsFilter/DesignsFilter';
 import ShirtsList from '../components/Shirts';
@@ -14,7 +14,7 @@ import ItemGrid from '../components/ItemGrid/ItemGrid';
 //   ${tw`bg-blue-500 hover:bg-blue-800 text-white p-2 rounded`}
 // `;
 
-function LatestClothes({ latest }) {
+/* function LatestClothes({ latest }) {
   // console.log(latest, 'im latest');
   return (
     <div>
@@ -59,9 +59,9 @@ const HomePage = () => {
       </HomePageGrid>
     </div>
   );
-};
+}; */
 
-/* const HomePage = ({ data }) => {
+const HomePage = ({ data }) => {
   const shirtList = data.shirts.nodes;
   return (
     <>
@@ -95,6 +95,5 @@ export const query = graphql`
       }
     }
   }
-`; */
-
+`;
 export default HomePage;

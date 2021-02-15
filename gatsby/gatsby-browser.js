@@ -1,5 +1,10 @@
 import React from 'react';
-import 'tailwindcss/dist/base.min.css';
+import './src/assets/tailwind.css';
+
+// import 'tailwindcss/dist/base.min.css';
+// import 'tailwindcss/base.css';
+// import 'tailwindcss/components.css';
+// import 'tailwindcss/utilities.css';
 
 import Layout from './src/components/Layout';
 import { OrderProvider } from './src/components/OrderContext';

@@ -1,73 +1,129 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
+import tw from 'twin.macro';
+import Logo from './Logo';
+import NavbarLinks from './NavLinks';
 
-const NavStyles = styled.nav`
-  margin-bottom: 3rem;
-  ul {
-    margin: 0;
-    padding: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 2rem;
-    list-style-type: none;
-    text-align: center;
-    align-items: center;
-  }
+const Navigation = styled.nav`
+  height: 13vh;
+  // width: 100%;
+  display: flex;
+  position: sticky;
+  top: 0;
+  // background-color: #fff;
+  align-items: center;
+  // position: relative;
+  justify-content: space-between;
+  text-transform: uppercase;
+  // border-bottom: 2px solid #33333320;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  padding: 0 1vw;
+  z-index: 2;
+  align-self: center;
 
-  li {
-    --rotate: -2deg;
-    transform: rotate(var(--rotate));
-    order: 1;
-    &:nth-child(1) {
-      --rotate: 1deg;
-    }
-    &:nth-child(2) {
-      --rotate: -2.5deg;
-    }
-    &:nth-child(3) {
-      --rotate: 2.5deg;
-    }
-    &:hover {
-      --rotate: 3deg;
-    }
-  }
-
-  a {
-    font-size: 3rem;
-    text-decoration: none;
-    &:hover {
-      color: var(--red);
-    }
-    &[aria-current='page'] {
-      color: var(--red);
-    }
+  @media (max-width: 768px) {
+    position: sticky;
+    height: 8vh;
+    top: 0;
+    left: 0;
+    right: 0;
   }
 `;
 
-const Nav = () => (
-  <NavStyles>
-    <ul>
-      <li>
-        <Link to="/">Home</Link>
-      </li>
-      <li>
-        <Link to="/order">Order</Link>
-      </li>
-      <li>
-        <Link to="/shirts">Shirts</Link>
-      </li>
-      <li>
-        <Link to="/gallery">Gallery</Link>
-      </li>
-      <li>
-        <Link to="/checkout">Checkout</Link>
-      </li>
-      <li>
-        <Link to="/men">Mens</Link>
-      </li>
-    </ul>
-  </NavStyles>
-);
+const Toggle = styled.div`
+  display: none;
+  height: 100%;
+  cursor: pointer;
+  padding: 0 10vw;
+
+  @media (max-width: 500px) {
+    // @media (max-width: 768px) {
+    display: flex;
+  }
+`;
+
+const Navbox = styled.div`
+  display: flex;
+  height: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  // background-color: red;
+
+  @media (max-width: 500px) {
+    flex-direction: column;
+    position: fixed;
+    width: 100%;
+    height: auto;
+    justify-content: flex-start;
+    // padding-top: 10vh;
+    // background-color: #fff;
+    transition: all 0.2s ease-in;
+    top: 7.8vh;
+    right: ${(props) => (props.open ? '-100%' : '0px')};
+  }
+`;
+
+const Hamburger = styled.div`
+  background-color: #111;
+  width: 30px;
+  height: 3px;
+  transition: all 0.3s linear;
+  align-self: center;
+  position: relative;
+  transform: ${(props) => (props.open ? 'rotate(-45deg)' : 'inherit')};
+
+  ::before,
+  ::after {
+    width: 30px;
+    height: 3px;
+    background-color: #111;
+    content: '';
+    position: absolute;
+    transition: all 0.3s linear;
+  }
+
+  ::before {
+    transform: ${(props) =>
+      props.open ? 'rotate(-90deg) translate(-10px, 0px)' : 'rotate(0deg)'};
+    top: -10px;
+  }
+
+  ::after {
+    opacity: ${(props) => (props.open ? '0' : '1')};
+    transform: ${(props) => (props.open ? 'rotate(90deg) ' : 'rotate(0deg)')};
+    top: 10px;
+  }
+`;
+
+const Nav = () => {
+  const [navbarOpen, setNavbarOpen] = useState(false);
+
+  return (
+    <>
+      <Navigation className="bg-gray-50">
+        <Logo />
+        <Toggle
+          navbarOpen={navbarOpen}
+          onClick={() => setNavbarOpen(!navbarOpen)}
+        >
+          <Hamburger open={navbarOpen} />
+        </Toggle>
+
+        {navbarOpen ? (
+          <Navbox className="bg-gray-50">
+            <NavbarLinks />
+          </Navbox>
+        ) : (
+          <Navbox open>
+            <NavbarLinks />
+          </Navbox>
+        )}
+      </Navigation>
+      {/* <div className="mb-32" /> */}
+    </>
+  );
+};
 
 export default Nav;
