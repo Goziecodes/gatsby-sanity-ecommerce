@@ -17,7 +17,7 @@ export default {
   },
 
   plugins: [
-    // 'gatsby-plugin-styled-components',
+     'gatsby-plugin-styled-components',
     // 'gatsby-plugin-postcss',
     'gatsby-plugin-react-helmet',
     {
